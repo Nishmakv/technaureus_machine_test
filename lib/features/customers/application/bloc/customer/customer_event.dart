@@ -1,4 +1,4 @@
-part of 'user_bloc.dart';
+part of 'customer_bloc.dart';
 
 sealed class UserEvent extends Equatable {
   const UserEvent();

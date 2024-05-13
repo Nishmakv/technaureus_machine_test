@@ -43,6 +43,21 @@ class ApiManager {
     }
   }
 
+ Future<BaseResponse> put(
+    String path,
+    {Map<String, dynamic>? queryParameters}
+  ) async {
+    try {
+      final response = await _dio.get(
+        path,
+        queryParameters: queryParameters,
+      );
+      return BaseResponse.fromJson(response.data);
+    } catch (e) {
+      throw _handleError(e);
+    }
+  }
+
 
   // Handle Dio errors
   dynamic _handleError(error) {
