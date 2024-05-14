@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:technaureus_machine_test/common/app_themes.dart';
+import 'package:technaureus_machine_test/features/products/presentation/pages/pages.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp();
+    return  MaterialApp(
+      theme:appTheme,
+      debugShowCheckedModeBanner: false,
+      home: ProductScreen(),
+    );
   }
 }

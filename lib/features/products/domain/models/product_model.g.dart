@@ -11,11 +11,6 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       name: json['name'] as String,
       image: json['image'] as String,
       price: (json['price'] as num).toInt(),
-      createdDate: (json['created_date'] as num).toInt(),
-      createdTime: (json['created_time'] as num).toInt(),
-      modifiedDate: (json['modified_date'] as num).toInt(),
-      modifiedTime: (json['modified_time'] as num).toInt(),
-      flag: json['flag'] as bool,
     );
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
@@ -24,9 +19,4 @@ Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
       'name': instance.name,
       'image': instance.image,
       'price': instance.price,
-      'created_date': instance.createdDate,
-      'created_time': instance.createdTime,
-      'modified_date': instance.modifiedDate,
-      'modified_time': instance.modifiedTime,
-      'flag': instance.flag,
     };

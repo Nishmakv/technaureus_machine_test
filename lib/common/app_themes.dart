@@ -1,27 +1,24 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData appTheme = ThemeData(
-  primaryColor:const Color.fromARGB(255,110, 150, 95),
-  scaffoldBackgroundColor: Colors.white,
+  primaryColor: const Color.fromARGB(255, 110, 150, 95),
+  scaffoldBackgroundColor: Color.fromARGB(255, 245, 255, 245),
   colorScheme: ColorScheme.fromSwatch().copyWith(
-    primary: const Color.fromARGB(255,110, 150, 95),
+    primary: const Color.fromARGB(255, 110, 150, 95),
     onPrimary: const Color.fromARGB(255, 220, 227, 217),
-    background: Colors.green,
-    surface: const Color.fromARGB(255, 246, 247, 251),
+   background: Color(0xffd2e6cd),
+    surface: Colors.white,
     onBackground: Colors.black,
     outline: Colors.black12,
   ),
 
   primaryTextTheme: TextTheme(
     titleLarge: TextStyle(
-      color: Colors.black,
+      color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 24,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
     ),
     titleMedium: TextStyle(
       color: Colors.black,
@@ -42,25 +39,12 @@ final ThemeData appTheme = ThemeData(
       fontWeight: FontWeight.w400,
     ),
   ),
- 
+
   iconButtonTheme: IconButtonThemeData(
-      style: ButtonStyle(
-    fixedSize: MaterialStateProperty.all(const Size(50, 50)),
-    backgroundColor: MaterialStateProperty.all(Colors.white),
-  ),
-  ),
-  snackBarTheme: SnackBarThemeData(
-    showCloseIcon: true,
-    backgroundColor: Colors.white,
-    behavior: SnackBarBehavior.floating,
-    contentTextStyle: TextStyle(
-      color: Colors.black,
-      fontFamily: GoogleFonts.dmSans().fontFamily,
-      fontSize: 14,
-      fontWeight: FontWeight.w500,
+    style: ButtonStyle(
+      fixedSize: MaterialStateProperty.all(const Size(50, 50)),
+      backgroundColor: MaterialStateProperty.all(Colors.white),
     ),
-    insetPadding: const EdgeInsets.all(10),
-    closeIconColor: Colors.black38,
   ),
   cardTheme: CardTheme(
     surfaceTintColor: Colors.white,
@@ -70,19 +54,13 @@ final ThemeData appTheme = ThemeData(
       borderRadius: BorderRadius.circular(20),
     ),
   ),
- buttonTheme: const ButtonThemeData(
-  buttonColor:  Color.fromARGB(255,110, 150, 95), 
- ),
-  checkboxTheme: const CheckboxThemeData(
-    side: BorderSide(
-      color: Colors.black45,
-    ),
+  buttonTheme: const ButtonThemeData(
+    buttonColor: Color.fromARGB(255, 110, 150, 95),
   ),
-
-  dividerColor: Colors.black12,
-  dividerTheme: const DividerThemeData(
-    color: Colors.black12,
-  ),
+ 
+ 
   textTheme: GoogleFonts.dmSansTextTheme(),
+
+  hintColor: Color.fromARGB(255, 205, 218, 201),
   // Add more theme properties as needed
 );
