@@ -5,7 +5,7 @@ import 'package:technaureus_machine_test/features/customers/domain/models/custom
 import 'package:technaureus_machine_test/features/customers/domain/models/customer_request_model.dart';
 import 'package:technaureus_machine_test/features/customers/domain/models/order_request_model.dart';
 
-class UserRepository {
+class CustomerRepository {
   final apiManager = ApiManager();
   List<CustomerModel> customerModel = [];
 
@@ -76,7 +76,7 @@ class UserRepository {
   }
 
   Future<Result<bool>> updateCustomer(
-      {required CustomerRequestModel customerRequestModel, int? id}) async {
+      {required CustomerRequestModel customerRequestModel, required int id}) async {
     try {
       final response = await apiManager.put(
         ApiUris.customerUri,

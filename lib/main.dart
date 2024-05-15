@@ -3,7 +3,7 @@ import 'package:technaureus_machine_test/common/app_themes.dart';
 import 'package:technaureus_machine_test/features/products/presentation/pages/pages.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home:  const ProductScreen(),
+      home: const ProductScreen(),
     );
   }
 }
