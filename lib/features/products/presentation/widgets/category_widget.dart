@@ -13,11 +13,14 @@ class CategoryWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Categories'),
+          Text(
+            'Categories',
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          SizedBox(height: 15),
           SizedBox(
-            height: screenHeight * 0.09,
+            height: screenHeight * 0.10,
             child: ListView.separated(
-      
               scrollDirection: Axis.horizontal,
               itemCount: categories.length,
               itemBuilder: (context, index) {
@@ -25,7 +28,7 @@ class CategoryWidget extends StatelessWidget {
                 return CategoryCard(categoryClass: category);
               },
               separatorBuilder: (context, index) {
-                return const SizedBox(width: 10);
+                return const SizedBox(width: 8);
               },
             ),
           ),

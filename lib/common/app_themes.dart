@@ -3,64 +3,92 @@ import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData appTheme = ThemeData(
   primaryColor: const Color.fromARGB(255, 110, 150, 95),
-  scaffoldBackgroundColor: Color.fromARGB(255, 245, 255, 245),
+  scaffoldBackgroundColor: const Color.fromARGB(255, 245, 255, 245),
   colorScheme: ColorScheme.fromSwatch().copyWith(
     primary: const Color.fromARGB(255, 110, 150, 95),
     onPrimary: const Color.fromARGB(255, 220, 227, 217),
-   background: Color(0xffd2e6cd),
+    secondary: const Color.fromARGB(255, 205, 218, 201),
+    background: const Color(0xffd2e6cd),
     surface: Colors.white,
     onBackground: Colors.black,
-    outline: Colors.black12,
+    outline: const Color.fromARGB(19, 145, 145, 145),
+    outlineVariant: const Color.fromRGBO(0, 0, 0, 0.038),
   ),
-
-  primaryTextTheme: TextTheme(
+  textTheme: TextTheme(
     titleLarge: TextStyle(
       color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
-      fontSize: 24,
+      fontSize: 21,
       fontWeight: FontWeight.bold,
     ),
     titleMedium: TextStyle(
-      color: Colors.black,
+      color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
-      fontSize: 20,
-      fontWeight: FontWeight.w700,
+      fontSize: 15,
+      fontWeight: FontWeight.w900,
     ),
     titleSmall: TextStyle(
-      color: Colors.black,
+      color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
+      fontSize: 11,
+      fontWeight: FontWeight.bold,
     ),
     bodyMedium: TextStyle(
-      color: Colors.black87,
+      color: const Color.fromARGB(255, 205, 218, 201),
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 12,
+      fontWeight: FontWeight.bold,
+    ),
+    bodyLarge: TextStyle(
+      color: Colors.white,
+      fontSize: 13,
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontWeight: FontWeight.bold,
+    ),
+    displayLarge: TextStyle(
+      color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 16,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w900,
     ),
+    displaySmall: TextStyle(
+      color: const Color.fromARGB(255, 110, 150, 95),
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 14,
   ),
-
+   displayMedium: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 21,
+      fontWeight: FontWeight.w900,
+    ),
+    headlineLarge: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 14,
+      fontWeight: FontWeight.w900,
+    ), 
+     headlineMedium: TextStyle(
+      color: const Color(0xff737373),
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 12,
+      fontWeight: FontWeight.w900,
+    ), 
+  ),
+  
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       fixedSize: MaterialStateProperty.all(const Size(50, 50)),
       backgroundColor: MaterialStateProperty.all(Colors.white),
     ),
   ),
-  cardTheme: CardTheme(
-    surfaceTintColor: Colors.white,
-    color: Colors.white,
-    elevation: 0,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20),
-    ),
-  ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Color.fromARGB(255, 110, 150, 95),
   ),
+  hintColor: const Color.fromARGB(255, 205, 218, 201),
+  dividerColor: const Color.fromARGB(36, 0, 0, 0),
+  dividerTheme: const DividerThemeData(
+    color:  Color.fromARGB(36, 0, 0, 0),
+  ),
  
- 
-  textTheme: GoogleFonts.dmSansTextTheme(),
-
-  hintColor: Color.fromARGB(255, 205, 218, 201),
-  // Add more theme properties as needed
 );

@@ -12,62 +12,91 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            height: screenHeight * 0.3,
-            width: screenWidth * 0.5,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Theme.of(context).colorScheme.surface,
-              boxShadow: const [
-                BoxShadow(
-                  blurRadius: 1,
-                  color: Color.fromARGB(63, 0, 0, 0),
-                )
-              ],
-            ),
-            child: Column(
-              children: [
-                Image.asset(
-                  productModel!.image,
-                  width: 70,
-                  fit: BoxFit.cover,
+    return Column(
+      children: [
+        Stack(
+          children: [
+            Container(
+              width: screenWidth * 0.5,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Theme.of(context).colorScheme.surface,
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).colorScheme.outlineVariant,
+                    blurRadius: 12,
+                  )
+                ],
+                border: Border.all(
+                  color: Theme.of(context).colorScheme.outline,
                 ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(productModel!.name),
-                        Row(
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Center(
+                      child: SizedBox(
+                        height: 80,
+                        width: 80,
+                        child: Image.asset(
+                          productModel!.image,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // const SizedBox(height: 15),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                '\$ ${productModel?.price.toString() ?? "0.00"}'),
-                            const Text('/kg'),
+                              productModel!.name,
+                              style: Theme.of(context).textTheme.titleSmall,
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  '\$${productModel?.price.toString() ?? "0.00"}',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
+                                const Text('/kg'),
+                              ],
+                            )
                           ],
-                        )
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                     CircleAvatar(
-                      radius: 15,
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      child: Icon(
-                        Ionicons.add,
-                        color: Theme.of(context).colorScheme.surface,
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ],
+                      const SizedBox(width: 10),
+                      CircleAvatar(
+                        radius: 13,
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        child: Icon(
+                          Ionicons.add,
+                          size: 15,
+                          color: Theme.of(context).colorScheme.surface,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+            const Positioned(
+              top: 10,
+              right: 10,
+              child: Icon(
+                Ionicons.heart_outline,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

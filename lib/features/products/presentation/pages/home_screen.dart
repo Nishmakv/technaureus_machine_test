@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/category_widget.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/product_grid.dart';
+import 'package:technaureus_machine_test/features/products/presentation/widgets/app_bar_home.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,43 +10,84 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Good day!',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      Image.asset(
-                        'assets/images/istockphoto-1306714925-612x612.jpg',
-                        width: 30,
-                      ),
-                    ],
-                  ),
-                  const CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.white,
-                    child: Icon(Ionicons.cart_outline),
-                  ),
-                ],
+      bottomNavigationBar: SizedBox(
+        height: 75,
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: const Color(0xffd2e6cd),
+            iconSize: 30,
+            selectedIconTheme: const IconThemeData(size: 28.0),
+            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+            unselectedItemColor: const Color.fromARGB(255, 8, 100, 28),
+            selectedFontSize: 11,
+            unselectedFontSize: 11,
+            currentIndex: 0,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Ionicons.home,
+                  size: 22,
+                ),
+                label: "Home",
               ),
-            ),
-            const GroceryTextField(),
-            const SizedBox(height: 20),
-            SliderWidget(),
-            const SizedBox(height: 20),
-            CategoryWidget(),
-            const SizedBox(height: 20),
-            ProductGrid(items: homeProducts),
-          ],
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Ionicons.search,
+                  size: 22,
+                ),
+                label: "Product",
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Ionicons.person_outline,
+                  size: 22,
+                ),
+                label: "Customer",
+              ),
+            ],
+          ),
         ),
+      ),
+      body: Column(
+        children: [
+          const AppBarHome(),
+          const GroceryTextField(),
+          const SizedBox(height: 10),
+          const SliderWidget(),
+          const CategoryWidget(),
+          Padding(
+            padding: const EdgeInsets.only(left: 15, right: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Discovery',
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'See all',
+                      style: Theme.of(context).textTheme.displaySmall,
+                    ),
+                    Icon(
+                      Ionicons.chevron_forward,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 13,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          ProductGrid(items: homeProducts),
+          // const CategoryWidget(),
+          // const SizedBox(height: 20),
+          // ProductGrid(items: homeProducts),
+        ],
       ),
     );
   }

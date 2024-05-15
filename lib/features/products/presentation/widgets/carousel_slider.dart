@@ -9,13 +9,9 @@ class SliderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
+    // final double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      height: screenHeight * 0.23,
-      width: screenWidth * 0.94,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-      ),
+      // height: screenHeight * 0.20,
       child: CarouselSlider(
         items: bannerImages
             .take(5)
@@ -24,7 +20,7 @@ class SliderWidget extends StatelessWidget {
                     return Container(
                         margin: const EdgeInsets.symmetric(horizontal: 3),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(25),
                           child: Image.asset(
                             e,
                             fit: BoxFit.cover,
@@ -35,6 +31,9 @@ class SliderWidget extends StatelessWidget {
             .toList(),
         options: CarouselOptions(
           enableInfiniteScroll: false,
+          height: screenHeight * 0.27,
+          disableCenter: true,
+          viewportFraction: 0.90,
         ),
       ),
     );
