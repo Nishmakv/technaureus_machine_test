@@ -22,6 +22,7 @@ class CustomerRepository {
       }
       return const Result.failure('Api fetching failed');
     } catch (e) {
+      print(e);
       return const Result.failure('an error occurred');
     }
   }
@@ -76,7 +77,8 @@ class CustomerRepository {
   }
 
   Future<Result<bool>> updateCustomer(
-      {required CustomerRequestModel customerRequestModel, required int id}) async {
+      {required CustomerRequestModel customerRequestModel,
+      required int id}) async {
     try {
       final response = await apiManager.put(
         ApiUris.customerUri,

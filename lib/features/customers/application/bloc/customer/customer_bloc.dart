@@ -7,17 +7,14 @@ part 'customer_event.dart';
 part 'customer_state.dart';
 
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
-  final CustomerRepository customerRepository;
-
-  CustomerBloc({required this.customerRepository})
-      : super(CustomerState.initial()) {
+  CustomerBloc() : super(CustomerState.initial()) {
     on<GetCustomer>(_onFetchCustomers);
     on<GetCustomerById>(_onFetchCustomer);
     on<CustomerSearch>(_onSearchCustomer);
     on<CreateCustomer>(_onCreateCustomer);
     on<UpdateCustomer>(_onUpdateCustomer);
   }
-
+  CustomerRepository customerRepository = CustomerRepository();
   Future<void> _onFetchCustomers(
     GetCustomer event,
     Emitter<CustomerState> emit,
@@ -26,10 +23,11 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
 
     try {
       final Result response = await customerRepository.getCustomers();
-      if (response.success??false) {
+      if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.fetched,
           customers: response.data ?? [],
+          searchCustomers: response.data ?? [],
         ));
       } else {
         emit(state.copyWith(
@@ -53,7 +51,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     try {
       final Result response =
           await customerRepository.getCustomerById(event.id);
-      if (response.success??false) {
+      if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.fetched,
           customer: response.data ?? [],
@@ -78,9 +76,15 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   ) async {
     emit(state.copyWith(status: CustomerStatus.fetching));
     try {
-      final Result response =
+      if (event.searchQuery.isEmpty) {
+        emit(state.copyWith(
+          status: CustomerStatus.fetched,
+          searchCustomers: state.customers,
+        ));
+      }
+      final  response =
           await customerRepository.customerSearch(event.searchQuery);
-      if (response.success??false) {
+      if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.fetched,
           searchCustomers: response.data ?? [],
@@ -107,7 +111,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     try {
       final Result response = await customerRepository.createCustomer(
           customerRequestModel: event.createCustomer);
-      if (response.success??false) {
+      if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.userCreated,
         ));
@@ -133,7 +137,7 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
     try {
       final Result response = await customerRepository.updateCustomer(
           customerRequestModel: event.updateCustomer, id: event.id);
-      if (response.success??false) {
+      if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.userUpdated,
         ));

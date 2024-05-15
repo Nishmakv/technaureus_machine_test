@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
 
 class GroceryTextField extends StatelessWidget {
   const GroceryTextField({super.key});
@@ -23,6 +25,12 @@ class GroceryTextField extends StatelessWidget {
           ),
         ),
         child: TextFormField(
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          onChanged: (value) {
+            context.read<ProductBloc>().add(SearchCategory(value));
+          },
           decoration: InputDecoration(
             hintText: 'search grocery',
             hintStyle: TextStyle(

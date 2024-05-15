@@ -6,6 +6,7 @@ class ApiManager {
   final String _baseUrl = 'http://143.198.61.94:8000/';
 
   ApiManager() {
+    _dio.options.baseUrl = _baseUrl;
     _dio.interceptors.add(
       LogInterceptor(
         responseBody: true,
@@ -15,10 +16,8 @@ class ApiManager {
   }
 
   // Generic function to handle GET requests
-  Future<BaseResponse> get(
-    String path,
-    {Map<String, dynamic>? queryParameters}
-  ) async {
+  Future<BaseResponse> get(String path,
+      {Map<String, dynamic>? queryParameters}) async {
     try {
       final response = await _dio.get(
         path,
@@ -43,10 +42,8 @@ class ApiManager {
     }
   }
 
- Future<BaseResponse> put(
-    String path,
-    {Map<String, dynamic>? queryParameters}
-  ) async {
+  Future<BaseResponse> put(String path,
+      {Map<String, dynamic>? queryParameters}) async {
     try {
       final response = await _dio.get(
         path,
@@ -57,7 +54,6 @@ class ApiManager {
       throw _handleError(e);
     }
   }
-
 
   // Handle Dio errors
   dynamic _handleError(error) {

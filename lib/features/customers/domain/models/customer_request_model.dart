@@ -6,9 +6,9 @@ class CustomerRequestModel {
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "profile_pic")
-  final String profilePic;
+  final String? profilePic;
   @JsonKey(name: "mobile_number")
-  final int mobileNumber;
+  final String mobileNumber;
   @JsonKey(name: "email")
   final String email;
   @JsonKey(name: "street")

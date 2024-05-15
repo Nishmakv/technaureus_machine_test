@@ -3,9 +3,15 @@ part of 'product_bloc.dart';
 enum ProductStatus {
   initial,
   fetching,
+  loved,
+  removedfromfav,
   fetched,
   exception,
+  categoriesSearched,
   navIndexChanged,
+  addedSuccessfully,
+  removedSuccessfully,
+  quantityChanged,
 }
 
 class ProductState extends Equatable {
@@ -14,7 +20,9 @@ class ProductState extends Equatable {
   final ProductModel? product;
   final List<ProductModel> searchProducts;
   final int navIndex;
-
+  final List<Categories> categories;
+  final List<Categories> searchCategories;
+  final List<int> favoriteItems;
   final String? errorMessage;
   bool get canShowNoData => ((status != ProductStatus.fetching));
   const ProductState({
@@ -23,6 +31,9 @@ class ProductState extends Equatable {
     this.errorMessage = '',
     this.product,
     this.searchProducts = const [],
+    this.favoriteItems = const [],
+    this.categories = const [],
+    this.searchCategories = const [],
     this.navIndex = 0,
   });
 
@@ -38,21 +49,31 @@ class ProductState extends Equatable {
     String? errorMessage,
     ProductModel? product,
     List<ProductModel>? searchProducts,
+    List<Categories>? categories,
+    List<Categories>? searchCategories,
+    List<int>? favoriteItems,
     int? navIndex,
   }) {
     return ProductState(
       status: status,
       products: products ?? this.products,
       errorMessage: errorMessage ?? this.errorMessage,
+      categories: categories ?? this.categories,
       product: product ?? this.product,
       searchProducts: searchProducts ?? this.searchProducts,
+      searchCategories: searchCategories ?? this.searchCategories,
+      favoriteItems: favoriteItems ?? this.favoriteItems,
       navIndex: navIndex ?? this.navIndex,
     );
   }
 
   @override
   List get props => [
+        navIndex,
         status,
+        favoriteItems,
+        categories,
+        searchCategories,
         errorMessage,
       ];
 }

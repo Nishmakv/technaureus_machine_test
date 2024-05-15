@@ -10,14 +10,15 @@ CustomerModel _$CustomerModelFromJson(Map<String, dynamic> json) =>
     CustomerModel(
       id: (json['id'] as num).toInt(),
       name: json['name'] as String,
-      profilePic: json['profile_pic'] as String,
-      mobileNumber: (json['mobile_number'] as num).toInt(),
+      profilePic: json['profile_pic'] as String?,
+      mobileNumber: json['mobile_number'] as String,
       email: json['email'] as String,
       street: json['street'] as String,
       streetTwo: json['street_two'] as String,
       city: json['city'] as String,
       country: json['country'] as String,
       state: json['state'] as String,
+      pincode: (json['pincode'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CustomerModelToJson(CustomerModel instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$CustomerModelToJson(CustomerModel instance) =>
       'city': instance.city,
       'country': instance.country,
       'state': instance.state,
+      'pincode': instance.pincode,
     };

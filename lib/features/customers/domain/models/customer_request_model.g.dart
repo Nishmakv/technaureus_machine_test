@@ -10,8 +10,8 @@ CustomerRequestModel _$CustomerRequestModelFromJson(
         Map<String, dynamic> json) =>
     CustomerRequestModel(
       name: json['name'] as String,
-      profilePic: json['profile_pic'] as String,
-      mobileNumber: (json['mobile_number'] as num).toInt(),
+      profilePic: json['profile_pic'] as String?,
+      mobileNumber: json['mobile_number'] as String,
       email: json['email'] as String,
       street: json['street'] as String,
       streetTwo: json['street_two'] as String,

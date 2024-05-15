@@ -8,9 +8,9 @@ class CustomerModel {
   @JsonKey(name: "name")
   final String name;
   @JsonKey(name: "profile_pic")
-  final String profilePic;
+  final String? profilePic;
   @JsonKey(name: "mobile_number")
-  final int mobileNumber;
+  final String mobileNumber;
   @JsonKey(name: "email")
   final String email;
   @JsonKey(name: "street")
@@ -23,11 +23,13 @@ class CustomerModel {
   final String country;
   @JsonKey(name: "state")
   final String state;
+  @JsonKey(name: "pincode")
+  final int pincode;
 
   CustomerModel({
     required this.id,
     required this.name,
-    required this.profilePic,
+    this.profilePic,
     required this.mobileNumber,
     required this.email,
     required this.street,
@@ -35,6 +37,7 @@ class CustomerModel {
     required this.city,
     required this.country,
     required this.state,
+    required this.pincode,
   });
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) =>

@@ -4,3 +4,5 @@ export 'category_card.dart';
 export 'category_class.dart';
 export 'category_widget.dart';
 export 'product_grid.dart';
+export 'app_bar_home.dart';
+export 'cart_icon_widget.dart';

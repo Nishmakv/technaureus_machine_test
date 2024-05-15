@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/cart_icon_widget.dart';
 
 class AppBarHome extends StatelessWidget {

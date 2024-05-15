@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/app_bar_home.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,49 +8,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: SizedBox(
-        height: 75,
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: const Color(0xffd2e6cd),
-            iconSize: 30,
-            selectedIconTheme: const IconThemeData(size: 28.0),
-            selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-            unselectedItemColor: const Color.fromARGB(255, 8, 100, 28),
-            selectedFontSize: 11,
-            unselectedFontSize: 11,
-            currentIndex: 0,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Ionicons.home,
-                  size: 22,
-                ),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Ionicons.search,
-                  size: 22,
-                ),
-                label: "Product",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Ionicons.person_outline,
-                  size: 22,
-                ),
-                label: "Customer",
-              ),
-            ],
-          ),
-        ),
-      ),
-      body: Column(
+    return SingleChildScrollView(
+      physics: AlwaysScrollableScrollPhysics(),
+      child: Column(
         children: [
           const AppBarHome(),
           const GroceryTextField(),
@@ -83,10 +42,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          ProductGrid(items: homeProducts),
-          // const CategoryWidget(),
-          // const SizedBox(height: 20),
-          // ProductGrid(items: homeProducts),
+          ProductGrid(items: homeProducts, isHomeProduct: true),
         ],
       ),
     );

@@ -1,7 +1,7 @@
 import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/category_class.dart';
 
-const baseUrl = "http://143.198.61.94:8000/";
+const baseUrl = "http://143.198.61.94:8000";
 
 List<ProductModel> homeProducts = [
   ProductModel(
@@ -16,7 +16,7 @@ List<ProductModel> homeProducts = [
     price: 45,
   ),
 ];
-List<Categories> categories = [
+List<Categories> categoriesData = [
   Categories(name: 'Fruit', image: 'assets/images/pngwing.com (3)-min.png'),
   Categories(name: 'Veggie', image: 'assets/images/pngwing.com (2).png'),
   Categories(name: 'Spice', image: 'assets/images/pngwing.com (4).png'),
