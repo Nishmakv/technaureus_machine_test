@@ -9,9 +9,6 @@ enum ProductStatus {
   exception,
   categoriesSearched,
   navIndexChanged,
-  addedSuccessfully,
-  removedSuccessfully,
-  quantityChanged,
 }
 
 class ProductState extends Equatable {

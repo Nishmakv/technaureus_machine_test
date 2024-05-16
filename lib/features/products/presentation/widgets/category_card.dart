@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/category_class.dart';
+import 'package:technaureus_machine_test/core/entity/category.dart';
+
 
 class CategoryCard extends StatelessWidget {
   final Categories categoryClass;

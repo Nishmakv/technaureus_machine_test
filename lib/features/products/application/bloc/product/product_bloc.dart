@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
+import 'package:technaureus_machine_test/core/entity/category.dart';
 import 'package:technaureus_machine_test/core/network/base_result.dart';
 import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
 import 'package:technaureus_machine_test/features/products/domain/repositories/product_repository.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';
@@ -15,9 +15,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<GetProductById>(_onFetchProduct);
     on<ProductSearch>(_onSearchProduct);
     on<NavItemChange>(_onNavItemChange);
-    on<AddToCart>(_onAddToCart);
-    on<RemoveFromCart>(_onRemoveFromCart);
-    on<OnQuantityChange>(_onQuantityChange);
     on<LoadCategories>(_loadCategory);
     on<SearchCategory>(_searchCategory);
     on<AddOrRemoveFav>(_addOrRemoveFav);
@@ -165,33 +162,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     emit(state.copyWith(
       status: ProductStatus.navIndexChanged,
       navIndex: event.navIndex,
-    ));
-  }
-
-  Future<void> _onAddToCart(
-    AddToCart event,
-    Emitter<ProductState> emit,
-  ) async {
-    emit(state.copyWith(
-      status: ProductStatus.addedSuccessfully,
-    ));
-  }
-
-  Future<void> _onRemoveFromCart(
-    RemoveFromCart event,
-    Emitter<ProductState> emit,
-  ) async {
-    emit(state.copyWith(
-      status: ProductStatus.removedSuccessfully,
-    ));
-  }
-
-  Future<void> _onQuantityChange(
-    OnQuantityChange event,
-    Emitter<ProductState> emit,
-  ) async {
-    emit(state.copyWith(
-      status: ProductStatus.quantityChanged,
     ));
   }
 }

@@ -64,8 +64,12 @@ class CreateCustomerScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Text(
-                    customer != null ? 'Update Customer' : 'Create Customer',
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Text(
+                      customer != null ? 'Update Customer' : 'Create Customer',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
                   AppTextField(
                     controller: nameController,
@@ -112,39 +116,43 @@ class CreateCustomerScreen extends StatelessWidget {
                     hintText: 'Enter your state',
                     label: 'State',
                   ),
-                  const SizedBox(height: 10),
-                  AppButton(
-                    text: customer!=null?'Update Customer':'Create Customer',
-                    onPressed: () {
-                      customer != null
-                          ? context.read<CustomerBloc>().add(UpdateCustomer(
-                              id: customer!.id,
-                              updateCustomer: CustomerRequestModel(
-                                name: nameController.text,
-                                profilePic: null,
-                                mobileNumber: mobileController.text,
-                                email: emailController.text,
-                                street: streetTwoController.text,
-                                streetTwo: streetTwoController.text,
-                                city: cityController.text,
-                                pincode: int.parse(pincodeController.text),
-                                country: countryController.text,
-                                state: stateController.text,
-                              )))
-                          : context.read<CustomerBloc>().add(CreateCustomer(
-                                  createCustomer: CustomerRequestModel(
-                                name: nameController.text,
-                                profilePic: null,
-                                mobileNumber: mobileController.text,
-                                email: emailController.text,
-                                street: streetTwoController.text,
-                                streetTwo: streetTwoController.text,
-                                city: cityController.text,
-                                pincode: int.parse(pincodeController.text),
-                                country: countryController.text,
-                                state: stateController.text,
-                              )));
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: AppButton(
+                      text: customer != null
+                          ? 'Update Customer'
+                          : 'Create Customer',
+                      onPressed: () {
+                        customer != null
+                            ? context.read<CustomerBloc>().add(UpdateCustomer(
+                                id: customer!.id,
+                                updateCustomer: CustomerRequestModel(
+                                  name: nameController.text,
+                                  profilePic: null,
+                                  mobileNumber: mobileController.text,
+                                  email: emailController.text,
+                                  street: streetTwoController.text,
+                                  streetTwo: streetTwoController.text,
+                                  city: cityController.text,
+                                  pincode: int.parse(pincodeController.text),
+                                  country: countryController.text,
+                                  state: stateController.text,
+                                )))
+                            : context.read<CustomerBloc>().add(CreateCustomer(
+                                    createCustomer: CustomerRequestModel(
+                                  name: nameController.text,
+                                  profilePic: null,
+                                  mobileNumber: mobileController.text,
+                                  email: emailController.text,
+                                  street: streetTwoController.text,
+                                  streetTwo: streetTwoController.text,
+                                  city: cityController.text,
+                                  pincode: int.parse(pincodeController.text),
+                                  country: countryController.text,
+                                  state: stateController.text,
+                                )));
+                      },
+                    ),
                   ),
                 ],
               ),

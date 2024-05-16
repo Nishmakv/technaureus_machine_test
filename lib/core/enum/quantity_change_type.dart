@@ -1,0 +1,1 @@
+enum QuantityChangeType { decrement, increment }

@@ -13,32 +13,35 @@ class CustomerList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      primary: false,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        final customer = customerModel[index];
-        return CustomerCard(
-          customerModel: customer,
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return CreateCustomerScreen(
-                    customer: customer,
-                  );
-                },
-              ),
-            );
-          },
-        );
-      },
-      separatorBuilder: (context, index) {
-        return const SizedBox(height: 10);
-      },
-      itemCount: customerModel.length,
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15),
+      child: ListView.separated(
+        primary: false,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          final customer = customerModel[index];
+          return CustomerCard(
+            customerModel: customer,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return CreateCustomerScreen(
+                      customer: customer,
+                    );
+                  },
+                ),
+              );
+            },
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 10);
+        },
+        itemCount: customerModel.length,
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:technaureus_machine_test/core/widgets/app_button.dart';
 
 class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
@@ -13,7 +12,7 @@ class AppTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
 
-  AppTextField({
+  const AppTextField({
     super.key,
     this.controller,
     this.label,
@@ -29,19 +28,18 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 20),
+      padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (label != null)
             Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 15),
               child: Text(
                 label!,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
             ),
-          const SizedBox(height: 15),
           TextFormField(
             onChanged: onChanged,
             controller: controller,
@@ -67,14 +65,14 @@ class AppTextField extends StatelessWidget {
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onBackground,
+                borderSide: const BorderSide(
+                  color: Color(0xff989898),
                 ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(25),
-                borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.onBackground,
+                borderSide: const BorderSide(
+                  color: Color(0xff989898),
                 ),
               ),
               hintText: hintText,

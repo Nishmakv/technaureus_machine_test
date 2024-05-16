@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/core/widgets/widgets.dart';
+import 'package:technaureus_machine_test/core/widgets/app_floating_button.dart';
 import 'package:technaureus_machine_test/features/customers/presentation/pages/customer_page.dart';
 import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
 import 'package:technaureus_machine_test/features/products/presentation/pages/pages.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({super.key});
+  const MainScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ProductBloc product = BlocProvider.of<ProductBloc>(context);
-    product.add(
-      const LoadCategories(),
-    );
     List screens = [
       const HomeScreen(),
       const ProductScreen(),
@@ -79,45 +75,8 @@ class MainScreen extends StatelessWidget {
               ? SizedBox(
                   width: MediaQuery.of(context).size.width * 0.92,
                   height: MediaQuery.of(context).size.height * 0.105,
-                  child: FloatingActionButton(
-                    backgroundColor: const Color(0xffd2e6cd),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 0,
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 32,
-                        right: 20,
-                        top: 16,
-                        bottom: 16,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "Subtotal",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Color.fromARGB(255, 71, 79, 71)),
-                              ),
-                              Text(
-                                "\$${42}",
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                            ],
-                          ),
-                          const AppButton(
-                            text: 'CHECKOUT NOW',
-                          ),
-                        ],
-                      ),
-                    ),
+                  child: const AppFloatingButton(
+                    isCustomerSelect: true,
                   ),
                 )
               : null,

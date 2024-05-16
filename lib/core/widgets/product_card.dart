@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
+import 'package:technaureus_machine_test/features/customers/presentation/widgets/quantity_control_widget.dart';
+import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
 import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
+import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
 import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
 
 class ProductCard extends StatelessWidget {
@@ -17,6 +20,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CartBloc product = context.read<CartBloc>();
+    product.add(GetCart());
     final double screenWidth = MediaQuery.of(context).size.width;
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
@@ -82,17 +87,9 @@ class ProductCard extends StatelessWidget {
                                 )
                               ],
                             ),
-                            CircleAvatar(
-                              radius: 13,
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.primary,
-                              child: Icon(
-                                Ionicons.add,
-                                size: 15,
-                                color: Theme.of(context).colorScheme.surface,
-                              
-                              ),
-                            )
+                            AddToCartButton(
+                                isHomeProduct: isHomeProduct,
+                                productModel: productModel)
                           ],
                         ),
                       ),
@@ -125,6 +122,67 @@ class ProductCard extends StatelessWidget {
             ),
           ],
         );
+      },
+    );
+  }
+}
+
+class AddToCartButton extends StatelessWidget {
+  const AddToCartButton({
+    super.key,
+    required this.isHomeProduct,
+    required this.productModel,
+  });
+
+  final bool isHomeProduct;
+  final ProductModel? productModel;
+
+  @override
+  Widget build(BuildContext context) {
+    final cartBloc = context.read<CartBloc>();
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        int index = -1;
+        CartModel? selectedItem;
+
+        if (state.cartItems.isNotEmpty) {
+          index =
+              state.cartItems.indexWhere((item) => item.id == productModel!.id);
+          if (index != -1) {
+            selectedItem = state.cartItems[index];
+          }
+        }
+
+        if (isHomeProduct || index == -1) {
+          return GestureDetector(
+            onTap: () {
+              if (!isHomeProduct) {
+                cartBloc.add(
+                  AddToCart(
+                    cartModel: CartModel(
+                      id: productModel!.id,
+                      name: productModel!.name,
+                      price: productModel!.price,
+                      image: productModel!.image,
+                      quantity: 1,
+                    ),
+                  ),
+                );
+              }
+            },
+            child: CircleAvatar(
+              radius: 13,
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              child: Icon(
+                Ionicons.add,
+                size: 15,
+                color: Theme.of(context).colorScheme.surface,
+              ),
+            ),
+          );
+        } else {
+          return QuantityControlWidget(cartModel: selectedItem!);
+        }
       },
     );
   }

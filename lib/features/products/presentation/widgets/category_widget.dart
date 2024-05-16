@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/common/app_constants.dart';
 import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/category_card.dart';
 

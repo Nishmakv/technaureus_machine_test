@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
+import 'package:technaureus_machine_test/common/app_constants.dart';
+import 'package:technaureus_machine_test/core/enum/quantity_change_type.dart';
+import 'package:technaureus_machine_test/features/customers/presentation/widgets/quantity_control_widget.dart';
+import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
+import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
 
 class CartWidget extends StatelessWidget {
-  final String image;
-  final String name;
-  final String price;
-  const CartWidget(
-      {super.key,
-      required this.image,
-      required this.name,
-      required this.price});
+  final CartModel cartModel;
+  const CartWidget({
+    super.key,
+    required this.cartModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,8 @@ class CartWidget extends StatelessWidget {
           children: [
             SizedBox(
               height: 40,
-              child: Image.asset(
-                'assets/images/pngwing.com-min.png',
+              child: Image.network(
+                baseUrl + cartModel.image,
                 width: 70,
                 fit: BoxFit.cover,
               ),
@@ -47,13 +48,13 @@ class CartWidget extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    'Onion',
+                    cartModel.name,
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                   Row(
                     children: [
                       Text(
-                        '\$3',
+                        cartModel.price.toString(),
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(
@@ -68,44 +69,10 @@ class CartWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 15),
-            Container(
-              height: 30,
-              width: 28,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.primary,
-                  width: 2,
-                ),
-              ),
-              child: Icon(
-                Ionicons.remove,
-                size: 15,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
+            QuantityControlWidget(cartModel: cartModel),
             const SizedBox(width: 15),
             Text(
-              '2',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(width: 15),
-            Container(
-              height: 30,
-              width: 28,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              child: Icon(
-                Ionicons.add,
-                size: 15,
-                color: Theme.of(context).colorScheme.surface,
-              ),
-            ),
-            const SizedBox(width: 15),
-            Text(
-              '\$6',
+              (cartModel.price * cartModel.quantity).toString(),
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ],
@@ -114,3 +81,5 @@ class CartWidget extends StatelessWidget {
     );
   }
 }
+
+

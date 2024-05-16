@@ -23,7 +23,7 @@ class AppBarHome extends StatelessWidget {
               ),
             ],
           ),
-         CartIconWidget(),
+         const CartIconWidget(),
         ],
       ),
     );

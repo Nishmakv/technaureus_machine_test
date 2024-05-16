@@ -5,7 +5,6 @@ import 'package:technaureus_machine_test/features/products/domain/models/models.
 
 class ProductRepository {
   final apiManager = ApiManager();
-  List<ProductModel> productModel = [];
 
   Future<Result<List<ProductModel>>> getProducts() async {
     try {
@@ -24,10 +23,12 @@ class ProductRepository {
     }
   }
 
+  
+
   Future<Result<ProductModel>> getProductById(int id) async {
     try {
       final response = await apiManager.get(
-       ApiUris.productUri,
+        ApiUris.productUri,
         queryParameters: {'id': id.toString()},
       );
       if (response.message == 'success') {
@@ -44,11 +45,11 @@ class ProductRepository {
   Future<Result<List<ProductModel>>> productSearch(String searchQuery) async {
     try {
       final response = await apiManager.get(
-      ApiUris.productUri,
+        ApiUris.productUri,
         queryParameters: {'search_query': searchQuery},
       );
       if (response.message == 'success') {
-       final productData = response.data as List<dynamic>;
+        final productData = response.data as List<dynamic>;
         final result =
             productData.map((e) => ProductModel.fromJson(e)).toList();
         return Result.success(result);

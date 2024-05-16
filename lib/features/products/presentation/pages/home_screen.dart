@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
+import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -8,8 +10,12 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProductBloc product = BlocProvider.of<ProductBloc>(context);
+    product.add(
+      const LoadCategories(),
+    );
     return SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
         children: [
           const AppBarHome(),
@@ -42,7 +48,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          ProductGrid(items: homeProducts, isHomeProduct: true),
+          ProductGrid(
+            items: homeProducts,
+            isHomeProduct: true,
+          ),
         ],
       ),
     );

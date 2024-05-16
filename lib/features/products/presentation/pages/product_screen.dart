@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/widgets/app_button.dart';
-import 'package:technaureus_machine_test/core/widgets/loading_widget.dart';
+import 'package:technaureus_machine_test/core/widgets/widgets.dart';
+import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
 import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
 import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
 
@@ -12,6 +12,8 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     ProductBloc product = context.read<ProductBloc>();
     product.add(const GetProduct());
+    CustomerBloc customerBloc = context.read<CustomerBloc>();
+    customerBloc.add(const GetCustomer());
     return BlocConsumer<ProductBloc, ProductState>(
       listener: (context, state) {},
       builder: (context, state) {

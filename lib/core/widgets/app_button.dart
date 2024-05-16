@@ -17,8 +17,6 @@ class AppButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        // height: screenHeight * 0.10,
-        // width: screenWidth * 0.5,
         height: screenHeight * 0.06,
         width: screenWidth * 0.5,
         decoration: BoxDecoration(

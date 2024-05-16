@@ -13,6 +13,7 @@ final ThemeData appTheme = ThemeData(
     onBackground: Colors.black,
     outline: const Color.fromARGB(19, 145, 145, 145),
     outlineVariant: const Color.fromRGBO(0, 0, 0, 0.038),
+    onPrimaryContainer: const Color(0xffc1c1c1),
   ),
   textTheme: TextTheme(
     titleLarge: TextStyle(
@@ -55,8 +56,8 @@ final ThemeData appTheme = ThemeData(
       color: const Color.fromARGB(255, 110, 150, 95),
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 14,
-  ),
-   displayMedium: TextStyle(
+    ),
+    displayMedium: TextStyle(
       color: Colors.black,
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 21,
@@ -67,15 +68,14 @@ final ThemeData appTheme = ThemeData(
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 14,
       fontWeight: FontWeight.w900,
-    ), 
-     headlineMedium: TextStyle(
+    ),
+    headlineMedium: TextStyle(
       color: const Color(0xff737373),
       fontFamily: GoogleFonts.dmSans().fontFamily,
       fontSize: 12,
       fontWeight: FontWeight.w900,
-    ), 
+    ),
   ),
-  
   iconButtonTheme: IconButtonThemeData(
     style: ButtonStyle(
       fixedSize: MaterialStateProperty.all(const Size(50, 50)),
@@ -88,7 +88,6 @@ final ThemeData appTheme = ThemeData(
   hintColor: const Color.fromARGB(255, 205, 218, 201),
   dividerColor: const Color.fromARGB(36, 0, 0, 0),
   dividerTheme: const DividerThemeData(
-    color:  Color.fromARGB(36, 0, 0, 0),
+    color: Color.fromARGB(36, 0, 0, 0),
   ),
- 
 );

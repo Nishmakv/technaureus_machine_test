@@ -62,24 +62,3 @@ class SearchCategory extends ProductEvent {
   @override
   List<Object?> get props => [];
 }
-
-class AddToCart extends ProductEvent {
-  const AddToCart();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class RemoveFromCart extends ProductEvent {
-  const RemoveFromCart();
-
-  @override
-  List<Object?> get props => [];
-}
-
-class OnQuantityChange extends ProductEvent {
-  const OnQuantityChange();
-
-  @override
-  List<Object?> get props => [];
-}
