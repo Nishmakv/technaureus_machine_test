@@ -17,15 +17,13 @@ class AppFloatingButton extends StatelessWidget {
     return BlocConsumer<CartBloc, CartState>(
       listener: (context, state) {
         if (state.status == CartStatus.orderCompleted) {
-          context.showSnackBar(
-            message: 'Order successfully completed',
-          );
           context.read<ProductBloc>().add(const NavItemChange(navIndex: 0));
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return const MainScreen();
             },
           ));
+         
         } else if (state.status == CartStatus.exception) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.errorMessage ?? "An error Occured"),

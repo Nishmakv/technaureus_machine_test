@@ -15,7 +15,11 @@ class CartScreen extends StatelessWidget {
 
     return BlocConsumer<CartBloc, CartState>(
       listener: (context, state) {
-        if (state.status == CartStatus.exception) {
+        if (state.status == CartStatus.orderCompleted) {
+          context.showSnackBar(
+            message: 'Order successfully completed',
+          );
+        } else if (state.status == CartStatus.exception) {
           context.showSnackBar(
             message: state.errorMessage ?? 'An error occurred',
           );
@@ -44,21 +48,23 @@ class CartScreen extends StatelessWidget {
           body: SafeArea(
             child: SingleChildScrollView(
               physics: const AlwaysScrollableScrollPhysics(),
-              child: state.cartItems.isNotEmpty?
-              Column(
-                children: [
-                  CartList(
-                    cartModel: state.cartItems,
-                  ),
-                ],
-              ):SizedBox(
-                height: context.height*0.7,
-                child: Center(
-                  child: Text('No Items in cart',style: Theme.of(context).textTheme.titleMedium,
-                ),
-              )
+              child: state.cartItems.isNotEmpty
+                  ? Column(
+                      children: [
+                        CartList(
+                          cartModel: state.cartItems,
+                        ),
+                      ],
+                    )
+                  : SizedBox(
+                      height: context.height * 0.7,
+                      child: Center(
+                        child: Text(
+                          'No Items in cart',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                      )),
             ),
-          ),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,

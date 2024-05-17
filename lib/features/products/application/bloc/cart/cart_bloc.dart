@@ -58,6 +58,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         emit(state.copyWith(
           status: CartStatus.orderCompleted,
         ));
+        emit(state.copyWith(
+          status: CartStatus.initial,
+        ));
       } else {
         emit(state.copyWith(
           status: CartStatus.exception,
@@ -66,7 +69,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       }
     } catch (e) {
       emit(state.copyWith(
-        status: CartStatus.orderCompleted,
+        status: CartStatus.exception,
         errorMessage: "An Error Occured",
       ));
     }

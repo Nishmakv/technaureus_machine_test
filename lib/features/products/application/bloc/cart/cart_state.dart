@@ -35,14 +35,14 @@ class CartState extends Equatable {
   }
 
   CartState copyWith({
-    required CartStatus status,
+    CartStatus? status,
     String? errorMessage,
     int? totalPrice,
     final List<CartModel>? cartItems,
     List<ProductModel>? products,
   }) {
     return CartState(
-      status: status,
+      status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
       cartItems: cartItems ?? this.cartItems,
       totalPrice: totalPrice ?? this.totalPrice,
