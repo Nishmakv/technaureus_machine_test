@@ -23,6 +23,8 @@ class AppFloatingButton extends StatelessWidget {
               return const MainScreen();
             },
           ));
+          context.showSnackBar(message: 'Order successfully completed',
+          );
         } else if (state.status == CartStatus.exception) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(state.errorMessage ?? "An error Occured"),
