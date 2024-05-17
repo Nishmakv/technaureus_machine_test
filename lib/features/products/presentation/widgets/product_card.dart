@@ -21,100 +21,106 @@ class ProductCard extends StatelessWidget {
     product.add(GetCart());
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
-        return Stack(
+        return Column(
           children: [
-            Container(
-              width: context.width * 0.5,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: Theme.of(context).colorScheme.surface,
-                boxShadow: [
-                  BoxShadow(
-                    color: Theme.of(context).colorScheme.outlineVariant,
-                    blurRadius: 12,
-                  )
-                ],
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.outline,
-                ),
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5),
-                    child: Center(
-                      child: SizedBox(
-                        height: 80,
-                        width: 90,
-                        child: isHomeProduct
-                            ? Image.asset(
-                                productModel!.image,
-                              )
-                            : Image.network(
-                                baseUrl + productModel!.image,
-                              ),
-                      ),
+            Stack(
+              children: [
+                Container(
+                  width: context.width * 0.5,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: Theme.of(context).colorScheme.surface,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        blurRadius: 12,
+                      )
+                    ],
+                    border: Border.all(
+                      color: Theme.of(context).colorScheme.outline,
                     ),
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                productModel!.name,
-                                style: Theme.of(context).textTheme.titleSmall,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    '\$${productModel?.price.toString() ?? "0.00"}',
-                                    style:
-                                        Theme.of(context).textTheme.titleMedium,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Center(
+                          child: SizedBox(
+                            height: 80,
+                            width: 90,
+                            child: isHomeProduct
+                                ? Image.asset(
+                                    productModel!.image,
+                                  )
+                                : Image.network(
+                                    baseUrl + productModel!.image,
                                   ),
-                                  const Text('/kg'),
-                                ],
-                              )
-                            ],
                           ),
                         ),
-                        AddToCartButton(
-                            isHomeProduct: isHomeProduct,
-                            productModel: productModel)
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 10,
-              right: 8,
-              child: GestureDetector(
-                onTap: () {
-                  if (isHomeProduct) {
-                    context
-                        .read<ProductBloc>()
-                        .add(AddOrRemoveFav(productModel!.id));
-                  }
-                },
-                child: state.favoriteItems.contains(productModel!.id)
-                    ? const Icon(
-                        Ionicons.heart,
-                        color: Colors.red,
-                      )
-                    : const Icon(
-                        Ionicons.heart_outline,
-                        color: Colors.red,
                       ),
-              ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    productModel!.name,
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '\$${productModel?.price.toString() ?? "0.00"}',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                      const Text('/kg'),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                            AddToCartButton(
+                                isHomeProduct: isHomeProduct,
+                                productModel: productModel)
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 8,
+                  child: GestureDetector(
+                    onTap: () {
+                      if (isHomeProduct) {
+                        context
+                            .read<ProductBloc>()
+                            .add(AddOrRemoveFav(productModel!.id));
+                      }
+                    },
+                    child: state.favoriteItems.contains(productModel!.id)
+                        ? const Icon(
+                            Ionicons.heart,
+                            color: Colors.red,
+                          )
+                        : const Icon(
+                            Ionicons.heart_outline,
+                            color: Colors.red,
+                          ),
+                  ),
+                ),
+              ],
             ),
           ],
         );

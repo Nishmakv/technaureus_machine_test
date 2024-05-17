@@ -18,15 +18,13 @@ class ProductGrid extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 15,
         right: 15,
-        bottom: isHomeProduct ? 0 : 100,
+        bottom: isHomeProduct ? 0 : context.height * 0.02,
       ),
       child: GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 7,
-            mainAxisSpacing: 7,
-            childAspectRatio: context.width / (context.height / 2.3),
           ),
           shrinkWrap: true,
           itemCount: items.length,
