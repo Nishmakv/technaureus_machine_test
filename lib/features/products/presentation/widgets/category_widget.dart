@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/category_card.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
     return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
         return Padding(
@@ -22,7 +21,7 @@ class CategoryWidget extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               SizedBox(
-                height: screenHeight * 0.10,
+                height: context.height * 0.10,
                 child: ListView.separated(
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,

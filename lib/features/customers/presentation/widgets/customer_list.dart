@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/models.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/pages/create_customer_page.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/customer_card.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 
 class CustomerList extends StatelessWidget {
   final List<CustomerModel> customerModel;
@@ -28,8 +26,9 @@ class CustomerList extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return CreateCustomerScreen(
-                      customer: customer,
+                    return CartScreen(
+                      customerId: customer.id,
+                     
                     );
                   },
                 ),

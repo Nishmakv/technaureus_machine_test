@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/widgets/app_floating_button.dart';
-import 'package:technaureus_machine_test/core/widgets/loading_widget.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/cart_list.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class CartScreen extends StatelessWidget {
   final int customerId;

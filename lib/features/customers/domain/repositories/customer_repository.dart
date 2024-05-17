@@ -1,9 +1,5 @@
-import 'package:technaureus_machine_test/core/network/api_manager.dart';
-import 'package:technaureus_machine_test/core/network/api_uris.dart';
-import 'package:technaureus_machine_test/core/network/base_result.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/customer_model.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/customer_request_model.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/order_request_model.dart';
+import 'package:technaureus_machine_test/core/network/network.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 
 class CustomerRepository {
   final apiManager = ApiManager();
@@ -18,24 +14,6 @@ class CustomerRepository {
         final productData = response.data as List<dynamic>;
         final result =
             productData.map((e) => CustomerModel.fromJson(e)).toList();
-        return Result.success(result);
-      }
-      return const Result.failure('Api fetching failed');
-    } catch (e) {
-      print(e);
-      return const Result.failure('an error occurred');
-    }
-  }
-
-  Future<Result<CustomerModel>> getCustomerById(int id) async {
-    try {
-      final response = await apiManager.get(
-        ApiUris.customerUri,
-        queryParameters: {'id': id.toString()},
-      );
-      if (response.message == 'success') {
-        final product = response.data;
-        final result = CustomerModel.fromJson(product);
         return Result.success(result);
       }
       return const Result.failure('Api fetching failed');

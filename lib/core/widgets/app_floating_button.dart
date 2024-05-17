@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/widgets/widgets.dart';
-import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/pages/cart_page.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/customer_card.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/pages/main_screen.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class AppFloatingButton extends StatelessWidget {
   final bool isCustomerSelect;
@@ -73,7 +68,9 @@ class AppFloatingButton extends StatelessWidget {
                         text: 'CHECKOUT NOW',
                         onPressed: () {
                           isCustomerSelect
-                              ? showCheckOutBottomSheet(context)
+                              ? context
+                                  .read<ProductBloc>()
+                                  .add(const NavItemChange(navIndex: 2))
                               : context.read<CartBloc>().add(OnOrder(id: id!));
                         },
                       ),
@@ -82,58 +79,6 @@ class AppFloatingButton extends StatelessWidget {
                 ),
               )
             : const SizedBox.expand();
-      },
-    );
-  }
-
-  void showCheckOutBottomSheet(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      builder: (context) {
-        return BlocBuilder<CustomerBloc, CustomerState>(
-          builder: (context, state) {
-            return ConstrainedBox(
-              constraints: BoxConstraints(
-                maxHeight: screenHeight * 0.7,
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15, right: 15),
-                      child: ListView.separated(
-                        primary: false,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          final customer = state.customers[index];
-                          return CustomerCard(
-                            customerModel: customer,
-                            onTap: () {
-                              Navigator.push(context, MaterialPageRoute(
-                                builder: (context) {
-                                  return CartScreen(
-                                    customerId: customer.id,
-                                  );
-                                },
-                              ));
-                            },
-                          );
-                        },
-                        separatorBuilder: (context, index) {
-                          return const SizedBox(height: 10);
-                        },
-                        itemCount: state.customers.length,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
       },
     );
   }

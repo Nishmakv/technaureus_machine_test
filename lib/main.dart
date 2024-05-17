@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/adapters.dart';
-import 'package:technaureus_machine_test/common/app_themes.dart';
-import 'package:technaureus_machine_test/core/services/hive_service.dart';
-import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/pages/main_screen.dart';
+import 'package:technaureus_machine_test/common/common.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +34,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: appTheme,
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: const MainScreen(),
     );
   }
 }

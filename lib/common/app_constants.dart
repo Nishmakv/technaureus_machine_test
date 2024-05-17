@@ -1,5 +1,5 @@
-import 'package:technaureus_machine_test/core/entity/category.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 const baseUrl = "http://143.198.61.94:8000";
 

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/core/widgets/app_floating_button.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/pages/customer_page.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/pages/pages.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -73,8 +72,8 @@ class MainScreen extends StatelessWidget {
               FloatingActionButtonLocation.centerFloat,
           floatingActionButton: state.navIndex == 1
               ? SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.92,
-                  height: MediaQuery.of(context).size.height * 0.105,
+                  width: context.width*0.92,
+                  height:context.height*0.105,
                   child: const AppFloatingButton(
                     isCustomerSelect: true,
                   ),

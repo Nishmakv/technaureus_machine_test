@@ -14,13 +14,6 @@ class GetProduct extends ProductEvent {
   List<Object?> get props => [];
 }
 
-class GetProductById extends ProductEvent {
-  final int id;
-  const GetProductById({required this.id});
-
-  @override
-  List<Object?> get props => [];
-}
 
 class ProductSearch extends ProductEvent {
   final String searchQuery;
@@ -29,8 +22,6 @@ class ProductSearch extends ProductEvent {
   @override
   List<Object?> get props => [];
 }
-
-
 
 class AddOrRemoveFav extends ProductEvent {
   final int id;

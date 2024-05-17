@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/cart_icon_widget.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
+
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({super.key});

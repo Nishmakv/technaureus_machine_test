@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:technaureus_machine_test/core/widgets/product_card.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
+
+
 
 class ProductGrid extends StatelessWidget {
   final List<ProductModel> items;

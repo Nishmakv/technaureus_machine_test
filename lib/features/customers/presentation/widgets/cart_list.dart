@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/cart_widget.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
 
 class CartList extends StatelessWidget {

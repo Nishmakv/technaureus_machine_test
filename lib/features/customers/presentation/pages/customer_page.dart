@@ -1,12 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/core/widgets/widgets.dart';
-import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/pages/create_customer_page.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/customer_list.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 
 class CustomerPage extends StatelessWidget {
   const CustomerPage({super.key});

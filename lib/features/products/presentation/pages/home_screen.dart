@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
+import 'package:technaureus_machine_test/common/common.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

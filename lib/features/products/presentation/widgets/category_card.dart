@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:technaureus_machine_test/core/entity/category.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+
 
 
 class CategoryCard extends StatelessWidget {
@@ -11,9 +12,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      width: screenWidth * 0.2,
+      width: context.width * 0.2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
         color: Theme.of(context).colorScheme.surface,

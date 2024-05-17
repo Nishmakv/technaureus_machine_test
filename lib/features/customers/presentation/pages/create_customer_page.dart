@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/widgets/widgets.dart';
-import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/models.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 
 class CreateCustomerScreen extends StatelessWidget {
   final CustomerModel? customer;
@@ -38,23 +37,11 @@ class CreateCustomerScreen extends StatelessWidget {
     return BlocConsumer<CustomerBloc, CustomerState>(
       listener: (context, state) {
         if (state.status == CustomerStatus.userCreated) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Customer created successfully'),
-            ),
-          );
+            context.showSnackBar(message: 'Customer created successfully');
         } else if (state.status == CustomerStatus.exception) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Customer created failed'),
-            ),
-          );
+           context.showSnackBar(message: 'Customer created failed');
         } else if (state.status == CustomerStatus.userUpdated) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Customer updated successfully'),
-            ),
-          );
+          context.showSnackBar(message: 'Customer updated successfully');
         }
       },
       builder: (context, state) {
@@ -67,7 +54,7 @@ class CreateCustomerScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 30),
                     child: Text(
-                      customer != null ? 'Update Customer' : 'Create Customer',
+                     'Create Customer',
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
@@ -119,38 +106,21 @@ class CreateCustomerScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: AppButton(
-                      text: customer != null
-                          ? 'Update Customer'
-                          : 'Create Customer',
+                      text:'Create Customer',
                       onPressed: () {
-                        customer != null
-                            ? context.read<CustomerBloc>().add(UpdateCustomer(
-                                id: customer!.id,
-                                updateCustomer: CustomerRequestModel(
-                                  name: nameController.text,
-                                  profilePic: null,
-                                  mobileNumber: mobileController.text,
-                                  email: emailController.text,
-                                  street: streetTwoController.text,
-                                  streetTwo: streetTwoController.text,
-                                  city: cityController.text,
-                                  pincode: int.parse(pincodeController.text),
-                                  country: countryController.text,
-                                  state: stateController.text,
-                                )))
-                            : context.read<CustomerBloc>().add(CreateCustomer(
-                                    createCustomer: CustomerRequestModel(
-                                  name: nameController.text,
-                                  profilePic: null,
-                                  mobileNumber: mobileController.text,
-                                  email: emailController.text,
-                                  street: streetTwoController.text,
-                                  streetTwo: streetTwoController.text,
-                                  city: cityController.text,
-                                  pincode: int.parse(pincodeController.text),
-                                  country: countryController.text,
-                                  state: stateController.text,
-                                )));
+                        context.read<CustomerBloc>().add(CreateCustomer(
+                                createCustomer: CustomerRequestModel(
+                              name: nameController.text,
+                              profilePic: null,
+                              mobileNumber: mobileController.text,
+                              email: emailController.text,
+                              street: streetTwoController.text,
+                              streetTwo: streetTwoController.text,
+                              city: cityController.text,
+                              pincode: int.parse(pincodeController.text),
+                              country: countryController.text,
+                              state: stateController.text,
+                            )));
                       },
                     ),
                   ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/widgets/widgets.dart';
-import 'package:technaureus_machine_test/features/customers/application/bloc/customer/customer_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/presentation/widgets/widgets.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key});

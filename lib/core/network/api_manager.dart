@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:technaureus_machine_test/core/network/base_response.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+
+
 
 class ApiManager {
   final Dio _dio = Dio();

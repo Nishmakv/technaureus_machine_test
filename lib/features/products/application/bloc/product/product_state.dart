@@ -4,7 +4,7 @@ enum ProductStatus {
   initial,
   fetching,
   loved,
-  removedfromfav,
+  removedFromFav,
   fetched,
   exception,
   categoriesSearched,

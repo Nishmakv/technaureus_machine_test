@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:hive_flutter/adapters.dart';
-import 'package:technaureus_machine_test/core/enum/quantity_change_type.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
+import 'package:technaureus_machine_test/core/core.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class HiveService {
   static const String hiveCartBox = 'cartBox';

@@ -14,14 +14,6 @@ class GetCustomer extends CustomerEvent {
   List<Object?> get props => [];
 }
 
-class GetCustomerById extends CustomerEvent {
-  final int id;
-  const GetCustomerById({required this.id});
-
-  @override
-  List<Object?> get props => [];
-}
-
 class CustomerSearch extends CustomerEvent {
   final String searchQuery;
   const CustomerSearch({required this.searchQuery});
@@ -33,15 +25,6 @@ class CustomerSearch extends CustomerEvent {
 class CreateCustomer extends CustomerEvent {
   final CustomerRequestModel createCustomer;
   const CreateCustomer({required this.createCustomer});
-
-  @override
-  List<Object?> get props => [];
-}
-
-class UpdateCustomer extends CustomerEvent {
-  final CustomerRequestModel updateCustomer;
-  final int id;
-  const UpdateCustomer({required this.updateCustomer,required this.id});
 
   @override
   List<Object?> get props => [];

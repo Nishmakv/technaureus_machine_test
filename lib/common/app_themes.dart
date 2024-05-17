@@ -82,6 +82,19 @@ final ThemeData appTheme = ThemeData(
       backgroundColor: MaterialStateProperty.all(Colors.white),
     ),
   ),
+  snackBarTheme: SnackBarThemeData(
+    showCloseIcon: true,
+    backgroundColor: Colors.white,
+    behavior: SnackBarBehavior.floating,
+    contentTextStyle: TextStyle(
+      color: Colors.black,
+      fontFamily: GoogleFonts.dmSans().fontFamily,
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    ),
+    insetPadding: const EdgeInsets.all(10),
+    closeIconColor: Colors.black38,
+  ),
   buttonTheme: const ButtonThemeData(
     buttonColor: Color.fromARGB(255, 110, 150, 95),
   ),

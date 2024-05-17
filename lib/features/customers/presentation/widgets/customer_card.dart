@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/features/customers/domain/domain.dart';
-
-import 'phone_icon.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 
 class CustomerCard extends StatelessWidget {
   final CustomerModel customerModel;

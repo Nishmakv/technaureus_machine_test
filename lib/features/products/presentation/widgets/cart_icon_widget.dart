@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/pages/cart_page.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
+
 
 class CartIconWidget extends StatelessWidget {
   const CartIconWidget({super.key});

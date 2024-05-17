@@ -1,11 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:technaureus_machine_test/core/enum/quantity_change_type.dart';
-import 'package:technaureus_machine_test/core/services/hive_service.dart';
-import 'package:technaureus_machine_test/features/customers/domain/models/models.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
-import 'package:technaureus_machine_test/features/products/domain/repositories/cart_repository.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

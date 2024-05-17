@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
+
 
 class GroceryTextField extends StatelessWidget {
   const GroceryTextField({super.key});

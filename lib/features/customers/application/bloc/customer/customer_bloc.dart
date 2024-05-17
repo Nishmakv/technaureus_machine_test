@@ -9,10 +9,8 @@ part 'customer_state.dart';
 class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
   CustomerBloc() : super(CustomerState.initial()) {
     on<GetCustomer>(_onFetchCustomers);
-    on<GetCustomerById>(_onFetchCustomer);
     on<CustomerSearch>(_onSearchCustomer);
     on<CreateCustomer>(_onCreateCustomer);
-    on<UpdateCustomer>(_onUpdateCustomer);
   }
   CustomerRepository customerRepository = CustomerRepository();
   Future<void> _onFetchCustomers(
@@ -28,33 +26,6 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
           status: CustomerStatus.fetched,
           customers: response.data ?? [],
           searchCustomers: response.data ?? [],
-        ));
-      } else {
-        emit(state.copyWith(
-          status: CustomerStatus.exception,
-          errorMessage: response.error ?? "Unknown error",
-        ));
-      }
-    } catch (e) {
-      emit(state.copyWith(
-        status: CustomerStatus.exception,
-        errorMessage: e.toString(),
-      ));
-    }
-  }
-
-  Future<void> _onFetchCustomer(
-    GetCustomerById event,
-    Emitter<CustomerState> emit,
-  ) async {
-    emit(state.copyWith(status: CustomerStatus.fetching));
-    try {
-      final Result response =
-          await customerRepository.getCustomerById(event.id);
-      if (response.success ?? false) {
-        emit(state.copyWith(
-          status: CustomerStatus.fetched,
-          customer: response.data ?? [],
         ));
       } else {
         emit(state.copyWith(
@@ -114,32 +85,6 @@ class CustomerBloc extends Bloc<CustomerEvent, CustomerState> {
       if (response.success ?? false) {
         emit(state.copyWith(
           status: CustomerStatus.userCreated,
-        ));
-      } else {
-        emit(state.copyWith(
-          status: CustomerStatus.exception,
-          errorMessage: response.error ?? "Unknown error",
-        ));
-      }
-    } catch (e) {
-      emit(state.copyWith(
-        status: CustomerStatus.exception,
-        errorMessage: 'An error occurred',
-      ));
-    }
-  }
-
-  Future<void> _onUpdateCustomer(
-    UpdateCustomer event,
-    Emitter<CustomerState> emit,
-  ) async {
-    emit(state.copyWith(status: CustomerStatus.fetching));
-    try {
-      final Result response = await customerRepository.updateCustomer(
-          customerRequestModel: event.updateCustomer, id: event.id);
-      if (response.success ?? false) {
-        emit(state.copyWith(
-          status: CustomerStatus.userUpdated,
         ));
       } else {
         emit(state.copyWith(

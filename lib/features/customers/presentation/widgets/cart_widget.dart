@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/core/enum/quantity_change_type.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/quantity_control_widget.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
+import 'package:technaureus_machine_test/core/core.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
 import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
 
 class CartWidget extends StatelessWidget {
@@ -14,11 +13,10 @@ class CartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
       child: Container(
-        height: screenHeight * 0.13,
+        height: context.height*0.13,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,

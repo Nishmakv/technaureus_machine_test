@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ionicons/ionicons.dart';
-import 'package:technaureus_machine_test/common/app_constants.dart';
-import 'package:technaureus_machine_test/features/customers/presentation/widgets/quantity_control_widget.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/cart/cart_bloc.dart';
-import 'package:technaureus_machine_test/features/products/application/bloc/product/product_bloc.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/cart_model.dart';
-import 'package:technaureus_machine_test/features/products/domain/models/models.dart';
+import 'package:technaureus_machine_test/common/common.dart';
+import 'package:technaureus_machine_test/features/customers/customers.dart';
+import 'package:technaureus_machine_test/features/products/products.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel? productModel;
