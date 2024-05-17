@@ -3,8 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:technaureus_machine_test/core/core.dart';
 import 'package:technaureus_machine_test/features/products/products.dart';
 
-
-
 class ProductGrid extends StatelessWidget {
   final List<ProductModel> items;
   final bool isHomeProduct;
@@ -17,13 +15,18 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15),
+      padding: EdgeInsets.only(
+        left: 15,
+        right: 15,
+        bottom: isHomeProduct ? 0 : 100,
+      ),
       child: GridView.builder(
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 7,
-            mainAxisSpacing: 8,
+            mainAxisSpacing: 7,
+            childAspectRatio: context.width / (context.height / 2.3),
           ),
           shrinkWrap: true,
           itemCount: items.length,

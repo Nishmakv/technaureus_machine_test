@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const AppBarHome(),
           const GroceryTextField(),
@@ -31,18 +32,25 @@ class HomeScreen extends StatelessWidget {
                   'Discovery',
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
-                Row(
-                  children: [
-                    Text(
-                      'See all',
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                    Icon(
-                      Ionicons.chevron_forward,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 13,
-                    ),
-                  ],
+                GestureDetector(
+                  onTap: () {
+                    context
+                        .read<ProductBloc>()
+                        .add(const NavItemChange(navIndex: 1));
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        'See all',
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                      Icon(
+                        Ionicons.chevron_forward,
+                        color: Theme.of(context).colorScheme.primary,
+                        size: 13,
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

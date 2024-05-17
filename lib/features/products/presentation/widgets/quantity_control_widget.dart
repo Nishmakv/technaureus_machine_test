@@ -10,9 +10,11 @@ class QuantityControlWidget extends StatelessWidget {
   const QuantityControlWidget({
     super.key,
     required this.cartModel,
+   
   });
 
   final CartModel cartModel;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +29,20 @@ class QuantityControlWidget extends StatelessWidget {
                   ),
                 );
           },
-          icon: Ionicons.remove,
+          icon: const Icon(
+            Ionicons.remove,
+            size: 10,
+          ),
+          color: Theme.of(context).colorScheme.surface,
+          
+          
         ),
-        const SizedBox(width: 15),
+        const SizedBox(width: 5),
         Text(
           cartModel.quantity.toString(),
           style: Theme.of(context).textTheme.headlineLarge,
         ),
-        const SizedBox(width: 15),
+        const SizedBox(width: 5),
         QuantityButton(
           onTap: () {
             context.read<CartBloc>().add(
@@ -44,10 +52,14 @@ class QuantityControlWidget extends StatelessWidget {
                   ),
                 );
           },
-          icon: Ionicons.add,
+          icon: Icon(
+            Ionicons.add,
+            size: 12,
+            color: Theme.of(context).colorScheme.surface,
+          ),
+          color: Theme.of(context).colorScheme.primary,
         ),
       ],
     );
   }
 }
-

@@ -14,11 +14,12 @@ class CustomerPage extends StatelessWidget {
     Timer? debounceTimer;
     CustomerBloc customer = BlocProvider.of<CustomerBloc>(context);
     customer.add(const GetCustomer());
-
-    final double screenHeight = MediaQuery.of(context).size.height;
-
     return BlocConsumer<CustomerBloc, CustomerState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state.status == CustomerStatus.exception) {
+          context.showSnackBar(message: state.errorMessage ?? 'An error occurred');
+        }
+      },
       builder: (context, state) {
         return SingleChildScrollView(
           child: Container(
@@ -74,14 +75,17 @@ class CustomerPage extends StatelessWidget {
                 ),
                 LoadingWidget(
                   isLoading: state.status == CustomerStatus.fetching,
+                  height: context.height * 0.70,
                   child: state.searchCustomers.isNotEmpty
                       ? CustomerList(
                           customerModel: state.searchCustomers,
                         )
                       : SizedBox(
-                          height: screenHeight * 0.5,
-                          child: const Center(
-                            child: Text("No Data Available"),
+                          height: context.height * 0.68,
+                          child:  Center(
+                            child: Text("No Customers",
+                            style: Theme.of(context).textTheme.titleMedium,
+                            ),
                           ),
                         ),
                 ),

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class QuantityButton extends StatelessWidget {
   final void Function()? onTap;
-  final IoniconsData icon;
+  final Icon icon;
+  final Color color;
+  
   const QuantityButton({
     super.key,
     required this.onTap,
     required this.icon,
+    required this.color,
+   
   });
 
   @override
@@ -15,20 +18,17 @@ class QuantityButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 30,
-        width: 28,
+        height: 18,
+        width: 23,
         decoration: BoxDecoration(
+          color: color,
           shape: BoxShape.circle,
           border: Border.all(
             color: Theme.of(context).colorScheme.primary,
             width: 2,
           ),
         ),
-        child: Icon(
-          icon,
-          size: 15,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+        child: icon,
       ),
     );
   }

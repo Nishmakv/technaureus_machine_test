@@ -20,21 +20,28 @@ class CategoryWidget extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: 15),
-              SizedBox(
-                height: context.height * 0.10,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.searchCategories.length,
-                  itemBuilder: (context, index) {
-                    final category = state.searchCategories[index];
-                    return CategoryCard(categoryClass: category);
-                  },
-                  separatorBuilder: (context, index) {
-                    return const SizedBox(width: 8);
-                  },
-                ),
-              ),
+              state.searchCategories.isNotEmpty
+                  ? SizedBox(
+                      height: context.height * 0.10,
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: state.searchCategories.length,
+                        itemBuilder: (context, index) {
+                          final category = state.searchCategories[index];
+                          return CategoryCard(categoryClass: category);
+                        },
+                        separatorBuilder: (context, index) {
+                          return const SizedBox(width: 8);
+                        },
+                      ),
+                    )
+                  : SizedBox(
+                      height: context.height * 0.5,
+                      child: const Center(
+                        child: Text("No Data Available"),
+                      ),
+                    ),
             ],
           ),
         );

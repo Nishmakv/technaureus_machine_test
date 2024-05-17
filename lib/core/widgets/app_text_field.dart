@@ -11,6 +11,7 @@ class AppTextField extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
+   final Function(String?)? validator;
 
   const AppTextField({
     super.key,
@@ -23,6 +24,7 @@ class AppTextField extends StatelessWidget {
     this.inputFormatters,
     this.keyboardType,
     this.onChanged,
+    this.validator,
   });
 
   @override
@@ -43,6 +45,9 @@ class AppTextField extends StatelessWidget {
           TextFormField(
             onChanged: onChanged,
             controller: controller,
+            keyboardType: keyboardType,
+             validator: (value) => validator != null ? validator!(value) : null,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
             style: TextStyle(
               color: Theme.of(context).colorScheme.onBackground,
             ),
